@@ -73,10 +73,19 @@ def parse_reports(self):
         # Write to file
         self.write_data_file(self.bam_stat_data, "multiqc_rseqc_bam_stat")
 
-        # Add to general stats table
+        # Add "proper_pairs_percent" to general stats table
         self.general_stats_headers["proper_pairs_percent"] = {
             "title": "% Proper Pairs",
             "description": "% Reads mapped in proper pairs",
+            "max": 100,
+            "min": 0,
+            "suffix": "%",
+            "scale": "RdYlGn",
+        }
+        # Add "unique_percent" to general stats table
+        self.general_stats_headers["unique_percent"] = {
+            "title": "% Aligned",
+            "description": "% Uniquely mapped",
             "max": 100,
             "min": 0,
             "suffix": "%",
